@@ -21,7 +21,7 @@ public class MovieController {
         return new ResponseEntity<>(movieService.getAllMovies(),HttpStatus.OK);
     }
     @PostMapping("/new")
-    public ResponseEntity<List<Movie>> addMovies(@RequestBody List<Movie> movies) throws Exception {
+    public ResponseEntity<List<Movie>> addMovies(@RequestBody List<Movie> movies){
         List<Movie> result = movieService.addMovies(movies);
         return new ResponseEntity<>(result,HttpStatus.OK);
     }

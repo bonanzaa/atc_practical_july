@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.exception.ReviewNotFoundException;
 import com.example.demo.model.Review;
 import com.example.demo.model.ReviewDTO;
 import com.example.demo.service.ReviewService;
@@ -23,7 +24,7 @@ public class ReviewController {
     }
 
     @PostMapping("/edit/{id}")
-    public ResponseEntity<Review> editReview(@RequestBody Review review, @PathVariable Long id) throws Exception {
+    public ResponseEntity<Review> editReview(@RequestBody Review review, @PathVariable Long id) throws ReviewNotFoundException {
         Review result = reviewService.editExistingReview(review,id);
         return new ResponseEntity<>(result,HttpStatus.OK);
     }

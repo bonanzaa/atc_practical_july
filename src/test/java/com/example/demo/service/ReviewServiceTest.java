@@ -55,7 +55,7 @@ public class ReviewServiceTest {
     }
 
     @Test
-    void addNewReviewInvalidRangeFailure() throws Exception {
+    void addNewReviewInvalidRangeFailure(){
         Throwable exception = assertThrows(Exception.class,() ->
                 reviewService.addNewReview(new Review().toBuilder().build(),0L));
 
@@ -82,7 +82,7 @@ public class ReviewServiceTest {
     }
 
     @Test
-    void editReviewFailure() throws Exception {
+    void editReviewFailure(){
         when(reviewRepository.findById(any(Long.class))).thenReturn(Optional.empty());
 
         Throwable exception = assertThrows(Exception.class,() ->

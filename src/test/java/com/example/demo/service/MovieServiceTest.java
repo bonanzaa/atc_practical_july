@@ -4,14 +4,11 @@ import com.example.demo.model.Movie;
 import com.example.demo.model.Review;
 import com.example.demo.repository.MovieRepository;
 import com.example.demo.repository.ReviewRepository;
-import com.example.demo.service.MovieService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Spy;
-import org.mockito.junit.MockitoJUnitRunner;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.ArrayList;
@@ -85,7 +82,7 @@ public class MovieServiceTest {
     }
 
     @Test
-    void getMovieByIdFail() throws Exception {
+    void getMovieByIdFail(){
         when(movieRepository.findById(any(Long.class))).thenReturn(Optional.empty());
 
         Throwable exception = assertThrows(Exception.class,() ->
@@ -95,7 +92,7 @@ public class MovieServiceTest {
     }
 
     @Test
-    void addMovieSuccess() throws Exception {
+    void addMovieSuccess(){
         Movie newMovie = new Movie().toBuilder()
                 .title("Test")
                 .director("Test")
@@ -107,7 +104,7 @@ public class MovieServiceTest {
     }
 
     @Test
-    void calculateAverageRatingSuccess() throws Exception {
+    void calculateAverageRatingSuccess() {
         Movie newMovie = new Movie().toBuilder()
                 .title("Test")
                 .director("Test")
@@ -128,7 +125,7 @@ public class MovieServiceTest {
     }
 
     @Test
-    void calculateAverageRatingFailure() throws Exception {
+    void calculateAverageRatingFailure(){
         Movie newMovie = new Movie().toBuilder()
                 .title("Test")
                 .director("Test")
