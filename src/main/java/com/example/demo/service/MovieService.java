@@ -1,12 +1,10 @@
 package com.example.demo.service;
 
-import com.example.demo.exception.DuplicateFoundException;
 import com.example.demo.exception.MovieNotFoundException;
 import com.example.demo.model.Movie;
 import com.example.demo.model.Review;
 import com.example.demo.repository.MovieRepository;
 import com.example.demo.repository.ReviewRepository;
-import org.apache.commons.collections4.IteratorUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

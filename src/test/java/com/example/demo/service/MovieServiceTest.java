@@ -36,9 +36,41 @@ public class MovieServiceTest {
     private MovieService service;
 
     @Test
+    void addMoviesSuccess(){
+        List<Movie> movies = List.of(
+                new Movie().toBuilder()
+                        .title("asd")
+                        .director("asd")
+                        .build(),
+                new Movie().toBuilder()
+                        .title("asd")
+                        .director("asd")
+                        .build()
+        );
+
+        when(movieRepository.getMovieByTitleAndDirector(any(String.class),any(String.class))).thenReturn(Optional.empty());
+        when(movieRepository.save(any(Movie.class))).thenReturn(new Movie().toBuilder().title("asd").director("asd").build());
+        List<Movie> result = service.addMovies(movies);
+
+        assertEquals(movies,result);
+    }
+
+    @Test
     void getAllMoviesTest(){
-        service.getAllMovies();
+        List<Movie> movies = List.of(
+                new Movie().toBuilder()
+                        .title("asd")
+                        .director("asd")
+                        .build(),
+                new Movie().toBuilder()
+                        .title("asd")
+                        .director("asd")
+                        .build()
+        );
+        when(movieRepository.findAll()).thenReturn(movies);
+        List<Movie> result = service.getAllMovies();
         verify(movieRepository,times(1)).findAll();
+        assertEquals(movies,result);
     }
 
     @Test
