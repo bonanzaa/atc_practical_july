@@ -17,12 +17,14 @@ public class MovieController {
     private MovieService movieService;
 
     @GetMapping("/all")
-    public List<Movie> getAllMovies(){
-        return movieService.getAllMovies();
+    public ResponseEntity<List<Movie>> getAllMovies(){
+        return new ResponseEntity<>(movieService.getAllMovies(),HttpStatus.OK);
     }
     @PostMapping("/new")
     public ResponseEntity<List<Movie>> addMovies(@RequestBody List<Movie> movies) throws Exception {
         List<Movie> result = movieService.addMovies(movies);
         return new ResponseEntity<>(result,HttpStatus.OK);
     }
+
+
 }
